@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
+</head>
+<body>
+    <h1>Create User</h1>
+    <form method="post"  th:object="${user}">
+
+        <input type="text" name="firstName" th:field="*{firstName}"
+               th:value="*{firstName}" th:errorclass="fieldError" placeholder="First Name">
+        <p class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name not valid.</p>
+
+        <input type="text" name="lastName" th:field="*{lastName}"
+               th:value="*{lastName}" th:errorclass="fieldError" placeholder="Last Name">
+        <p class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name not valid.</p>
+
+        <input type="email" name="email" th:field="*{email}"
+               th:value="*{email}" th:errorclass="fieldError" placeholder="Email">
+        <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Invalid email</p>
+
+            
+        <!--Address-->
+        
+        <input type="text" name="address1" th:field="*{address.address1}"
+               th:value="*{address.address1}" th:errorclass="fieldError" placeholder="Address 1">
+        <p class="error" th:if="${#fields.hasErrors('address.address1')}" th:errors="*{address.address1}">Address 1 not valid</p>
+
+        <input type="text" name="address2" th:field="*{address.address2}"
+               th:value="*{address.address2}" th:errorclass="fieldError" placeholder="Address 2">
+        <p class="error" th:if="${#fields.hasErrors('address.address2')}" th:errors="*{address.address2}">Address 2 not valid</p>
+
+
+        <input type="text" name="city" th:field="*{address.city}"
+               th:value="*{address.city}" th:errorclass="fieldError" placeholder="City">
+        <p class="error" th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}">City not valid</p>
+
+        <input type="text" name="country" th:field="*{address.country}"
+               th:value="*{address.country}" th:errorclass="fieldError" placeholder="Country">
+        <p class="error" th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}">Country not valid</p>
+        
+        <!--Address End-->
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

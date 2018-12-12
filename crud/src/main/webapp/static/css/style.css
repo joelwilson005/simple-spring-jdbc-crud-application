@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+h1, h2, p {
+    margin: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+form {
+    margin: 20px;
+    padding: 20px;
+}
+
+input, label {
+    display: block;
+    padding: 10px;
+    margin: 5px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.fieldError {
+    border: 1px solid red;
+}
+
+a {
+    display: inline-block;
+    padding: 10px;
+    margin:10px;
+    border: 1px solid black;
+}
+
+.user {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
