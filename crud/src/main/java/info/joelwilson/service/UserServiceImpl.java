@@ -1,7 +1,9 @@
 package info.joelwilson.service;
 
+import info.joelwilson.model.Address;
 import info.joelwilson.model.User;
 import info.joelwilson.repository.UserRepository;
+import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUser(User user) {
 
-        return this.userRepository.addUser(user);
+        return this.userRepository.addUser(propertyCapitalizer(user));
     }
 
     @Override
@@ -39,13 +41,29 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) {
 
-        return this.userRepository.updateUser(user);
+        return this.userRepository.updateUser(propertyCapitalizer(user));
     }
 
     @Override
     public void deleteUser(String id) {
 
         this.userRepository.deleteUser(id);
+
+    }
+
+    private static User propertyCapitalizer(User user) {
+
+        // Capitalize property values
+        Address address = user.getAddress();
+        user.setFirstName(WordUtils.capitalizeFully(user.getFirstName()));
+        user.setLastName(WordUtils.capitalizeFully(user.getLastName()));
+
+        address.setAddress1(WordUtils.capitalizeFully(address.getAddress1()));
+        address.setAddress2(WordUtils.capitalizeFully(address.getAddress2()));
+        address.setCity(WordUtils.capitalizeFully(address.getCity()));
+        address.setCountry(WordUtils.capitalizeFully(address.getCountry()));
+
+        return user;
 
     }
 }
